@@ -93,7 +93,8 @@ $(document).ready(function(){
         } else if (win1 > win2) {
             playerWins +=1;
             $( "#winner-modal").empty().prepend("<h1>The winner of this game is you!</h1>").dialog( "open" );
-            $("#player-win-counter").text(playerWins);
+//            $("#player-win-counter").text(playerWins);
+            GameWin("player");
             $("#player-choice img").attr("src","");
             $("#computer-choice img").attr("src","");
             playerRoundWin = 0;
@@ -101,7 +102,8 @@ $(document).ready(function(){
         } else if (win1 < win2) {
             computerWins +=1;
             $( "#winner-modal").empty().prepend("<h1>The winner of this game is Computer!</h1>").dialog( "open" );
-            $("#computer-win-counter").text(computerWins);
+//            $("#computer-win-counter").text(computerWins);
+            GameWin("computer");
             $("#player-choice img").attr("src","");
             $("#computer-choice img").attr("src","");
             playerRoundWin = 0;
@@ -126,8 +128,8 @@ $(document).ready(function(){
     var resetAll = function(){
         playerWins = 0;
         computerWins = 0;
-        $("#player-win-counter").text(playerWins);
-        $("#computer-win-counter").text(computerWins);
+        $("#player-win-counter").text(playerWins + win);
+        $("#computer-win-counter").text(computerWins + win);
         cleanChoiceText();
         cleanAvatars();
         cleanBubble();
@@ -147,6 +149,25 @@ $(document).ready(function(){
 
     var cleanBubble = function(){
         $("#bubble").css("display","none");
+    }
+
+    var GameWin = function(who){
+        win = " Game Win";
+        wins = " Game Wins";
+        if (who == "player") {
+            if (playerWins > 1) {
+                $("#player-win-counter").text(playerWins + wins);
+            } else {
+                $("#player-win-counter").text(playerWins + win);
+            }
+        }
+        else if (who == "computer") {
+            if (computerWins > 1) {
+                $("#computer-win-counter").text(computerWins + wins);
+            } else {
+                $("#computer-win-counter").text(computerWins + win);
+            }
+        }
     }
 
     $("#start-over").on("click",function(){

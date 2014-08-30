@@ -218,6 +218,17 @@ body {
     display: none;
 }
 
+#bubble:before{
+    border: solid;
+    border-color: #FFFFFF transparent;
+    border-width: 10px 10px 0 10px;
+    bottom: -10px;
+    content: "";
+    left: 64px;
+    position: absolute;
+    z-index: 99;
+}
+
 .bubble-message {
     line-height: 35px;
     vertical-align: middle;
