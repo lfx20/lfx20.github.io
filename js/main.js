@@ -106,18 +106,17 @@ $(document).ready(function(){
             playerRoundWin = 0;
             computerRoundWin = 0;
         }
-        cleanTrophy();
-        cleanChoiceText();
+
         cleanAvatars();
         cleanBubble();
     }
 
-    var cleanTrophy = function(){
+    cleanTrophy = function(){
         $("#player-trophy img").remove();
         $("#computer-trophy img").remove();
     }
 
-    var cleanChoiceText = function(){
+    cleanChoiceText = function(){
         $("#player-choice-text").empty();
         $("#computer-choice-text").empty();
     }
@@ -176,21 +175,17 @@ $(document).ready(function(){
         resetAll();
     })
 
-//    $(function() {
-//        $( "#winner-modal" ).dialog({
-//            autoOpen: false,
-//            show: {
-//                effect: "explode",
-//                duration: 1000
-//            },
-//            hide: {
-//                effect: "explode",
-//                duration: 1000
-//            },
-//            closeOnEscape: true,
-//            modal: true
-//        });
-//
-//
-//    });
+    $("#newGame").on("click",function(){
+        $("#instructions").show();
+        $("#game").hide();
+        resetAll();
+    })
+
+    startGame = function(avatar){
+        $("#instructions").hide();
+        $("#info-text").hide();
+        $("#game").show();
+        $("#avatar-img-player").attr("src", avatar);
+    }
+
 });

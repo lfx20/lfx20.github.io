@@ -107,8 +107,30 @@ body {
     border:2px solid #4ad8ce;
     text-align: center;
     background-color: #48d0c6;
+    color: #4F5E6A;
+    text-shadow: 1px 1px #DDDDDD;
+}
+
+#instructions {
     color:#efeaff;
     text-shadow: 1px 1px #333333;
+}
+
+.player-avatar {
+    margin: 0 8px;
+    border:1px solid transparent;
+    border-radius: 50%;
+    padding: 2px;
+}
+
+.player-avatar:hover {
+    border-color: #44E7AD;
+    background: #FFFFFF;
+    cursor: pointer;
+}
+
+#game {
+    display:none;
 }
 
 .player-title {
@@ -130,6 +152,18 @@ body {
     margin:20px 2px;
     height:500px;
     position: relative;
+}
+
+.avatar-img {
+    position:absolute;
+    top:0;
+    left:10px;
+    width: 60px;
+    height:60px;
+    padding: 2px;
+    background: #4ad8ce;
+    border:1px solid #efeaff;
+    border-radius: 50%;
 }
 
 .choice {
