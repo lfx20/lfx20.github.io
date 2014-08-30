@@ -143,10 +143,14 @@ body {
 }
 
 .img-choice {
-    height: 100px;
-    width:100px;
-    margin:10px;
-    opacity:.6;
+    height: 80px;
+    width: 80px;
+    margin: 10px;
+    opacity: .5;
+    border: 1px solid;
+    border-radius: 50%;
+    padding: 5px;
+    background: #9D8727;
 }
 
 .img-choice:hover, .img-active {
@@ -155,7 +159,9 @@ body {
     -webkit-transition: all 0.3s ease-in;-moz-transition: all 0.3s ease-in ;-ms-transition: all 0.3s ease-in ;-o-transition: all 0.3s ease-in ;transition: all 0.3s ease-in ;
 }
 
-
+.img-choice-box {
+    border-radius: 50%;
+}
 
 .choice-text {
     text-align: center;
@@ -232,6 +238,40 @@ body {
 .bubble-message {
     line-height: 35px;
     vertical-align: middle;
+}
+
+#winner-modal {
+    position:absolute;
+    z-index:9999;
+    top:0;
+    left:0;
+    bottom: 0;
+    right: 0;
+    width:100%;
+    height:100%;
+    background:red;
+    display: none;
+}
+
+.btn {
+    padding: 8px 14px;
+    border: 1px solid #2A6FAA;
+    border-radius: 4px;
+    background: #27679D;
+    color: #FFF;
+}
+
+.btn:hover {
+    background: #215683;
+}
+
+.btn-green {
+    background: #078D53;
+    border-color:#089A5B;
+}
+
+.btn-green:hover {
+    background: #067344;
 }
 
 #start-over {

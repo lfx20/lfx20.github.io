@@ -87,25 +87,22 @@ $(document).ready(function(){
 
     var playerWins = 0;
     var computerWins = 0;
+    var continueBtn = '<br/><br/><button class="btn btn-green" onclick="close_modal();">Continue</button>';
     var checkWinner = function(win1, win2) {
         if (win1 < 3 && win2 < 3) {
             return;
         } else if (win1 > win2) {
             playerWins +=1;
-            $( "#winner-modal").empty().prepend("<h1>The winner of this game is you!</h1>").dialog( "open" );
-//            $("#player-win-counter").text(playerWins);
+            $(".modal").modal_box({title:"Congratulations!",description:"You are the Winner!" + continueBtn, color:"green"});
             GameWin("player");
-            $("#player-choice img").attr("src","");
-            $("#computer-choice img").attr("src","");
+            cleanImgChoice();
             playerRoundWin = 0;
             computerRoundWin = 0;
         } else if (win1 < win2) {
             computerWins +=1;
-            $( "#winner-modal").empty().prepend("<h1>The winner of this game is Computer!</h1>").dialog( "open" );
-//            $("#computer-win-counter").text(computerWins);
+            $('.modal').modal_box({title:"You Lost!", description:"The Computer won this game!" + continueBtn, color: "red"});
             GameWin("computer");
-            $("#player-choice img").attr("src","");
-            $("#computer-choice img").attr("src","");
+            cleanImgChoice();
             playerRoundWin = 0;
             computerRoundWin = 0;
         }
@@ -125,17 +122,6 @@ $(document).ready(function(){
         $("#computer-choice-text").empty();
     }
 
-    var resetAll = function(){
-        playerWins = 0;
-        computerWins = 0;
-        $("#player-win-counter").text(playerWins + win);
-        $("#computer-win-counter").text(computerWins + win);
-        cleanChoiceText();
-        cleanAvatars();
-        cleanBubble();
-        cleanTrophy();
-    }
-
     var cleanAvatars = function(){
         $("#computerWins").css("display","none");
         $("#playerWins").css("display","none");
@@ -149,6 +135,11 @@ $(document).ready(function(){
 
     var cleanBubble = function(){
         $("#bubble").css("display","none");
+    }
+
+    var cleanImgChoice = function(){
+        $("#player-choice img").attr("src","img/empty.png");
+        $("#computer-choice img").attr("src","img/empty.png");
     }
 
     var GameWin = function(who){
@@ -170,25 +161,36 @@ $(document).ready(function(){
         }
     }
 
+    var resetAll = function(){
+        playerWins = 0;
+        computerWins = 0;
+        $("#player-win-counter").text(playerWins + win);
+        $("#computer-win-counter").text(computerWins + win);
+        cleanChoiceText();
+        cleanAvatars();
+        cleanBubble();
+        cleanTrophy();
+    }
+
     $("#start-over").on("click",function(){
         resetAll();
     })
 
-    $(function() {
-        $( "#winner-modal" ).dialog({
-            autoOpen: false,
-            show: {
-                effect: "explode",
-                duration: 1000
-            },
-            hide: {
-                effect: "explode",
-                duration: 1000
-            },
-            closeOnEscape: true,
-            modal: true
-        });
-
-
-    });
+//    $(function() {
+//        $( "#winner-modal" ).dialog({
+//            autoOpen: false,
+//            show: {
+//                effect: "explode",
+//                duration: 1000
+//            },
+//            hide: {
+//                effect: "explode",
+//                duration: 1000
+//            },
+//            closeOnEscape: true,
+//            modal: true
+//        });
+//
+//
+//    });
 });

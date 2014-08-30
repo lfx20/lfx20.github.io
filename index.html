@@ -14,7 +14,6 @@
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/le-frog/jquery-ui.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
@@ -26,7 +25,7 @@
         <div class="main-container">
             <h2>Paper, Scissors, Rock</h2>
             <p>This is the game I developed after i finished the Codecademy tutorial of JavaScript.</p>
-            <p>For now you are only able to play 1 Player game only, which means you play against your computer.
+            <p>For now, you are only able to play 1 Player game only, which means you play against your computer.
             <div class="player" style="float:left;">
                 <h3 class="player-title">Player 1: <span id="player-win-counter">0 Game Win</span> </h3>
                 <div class="avatar">
@@ -41,9 +40,9 @@
                     <img class="img-choice" id="rock" src="img/rock.png">
                 </div>
                 <div class="choice" id="player-choice">
-                    <img src="img/empty.png" width="100" height="100">
+                    <img class="img-choice-box" src="img/empty.png" width="100" height="100">
                 </div>
-                <p class="choice-text">Player 1: <span id="player-choice-text" style="color:#5EB25E;"></span></p>
+                <p class="choice-text">Player 1 choice: <span id="player-choice-text" style="color:#5EB25E;"></span></p>
                 <div id="player-trophy"></div>
 
             </div>
@@ -52,32 +51,29 @@
             <div class="player" style="float:right;">
                 <h3 class="player-title">Computer: <span id="computer-win-counter">0 Game Win</span></h3>
                 <div class="choice" id="computer-choice" style="margin-top:188px;">
-                    <img src="img/empty.png" width="100" height="100">
+                    <img class="img-choice-box" src="img/empty.png" width="100" height="100">
                 </div>
-                <p class="choice-text">Computer: <span id="computer-choice-text" style="color:#5EB25E;"></span></p>
+                <p class="choice-text">Computer choice: <span id="computer-choice-text" style="color:#5EB25E;"></span></p>
                 <div id="computer-trophy"></div>
             </div>
             <div style="clear: both;"></div>
-            <button id="start-over">Start over</button>
+            <button id="start-over" class="btn">Start over</button>
         </div>
-        <div id="winner-modal" title="Congratulations!!!"></div>
+
 
 
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
         <script src="js/plugins.js"></script>
+        <script src="js/modal-box.js"></script>
+        <!--<script>-->
+            <!--$(document).ready(function(){-->
+                <!--$('.modal').modal_box();-->
+            <!--});-->
+        <!--</script>-->
         <script src="js/main.js"></script>
 
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X');ga('send','pageview');
-        </script>
+
     </body>
 </html>
