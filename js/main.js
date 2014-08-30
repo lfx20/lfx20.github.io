@@ -2,7 +2,8 @@ $(document).ready(function(){
     $(".img-choice").on("click",function(){
         var playerChoice = $(this).attr("id");
         console.log("Player chose " + playerChoice);
-        $("#player-choice img").attr("src","img/" + playerChoice +".png");
+        $("#player-choice img").css("left","0");
+        $("#player-choice img").attr("src","img/" + playerChoice +".png").addClass("img-base-position").animate({left:"236px"},"slow");
         $("#player-choice-text").text($(this).attr("id"));
         var computerChoice = Math.random();
         if (computerChoice < 0.33) {
@@ -13,7 +14,8 @@ $(document).ready(function(){
             computerChoice = "scissors";
         }
         console.log("Computer chose: " + computerChoice);
-        $("#computer-choice img").attr("src","img/" + computerChoice + ".png");
+        $("#computer-choice img").css("left","0");
+        $("#computer-choice img").attr("src","img/" + computerChoice + ".png").addClass("img-flipH img-base-position").animate({left:"-236px"},"slow");
         $("#computer-choice-text").text(computerChoice);
         compareChoice(playerChoice,computerChoice);
         checkWinner(playerRoundWin,computerRoundWin);
@@ -23,31 +25,49 @@ $(document).ready(function(){
 
     var playerRoundWin = 0;
     var computerRoundWin = 0;
+    var drawMessage = "Draw";
+    var playerWinMessage = "You Win";
+    var computerWinMessage = "Computer Wins";
     var compareChoice = function(choice1,choice2) {
         if (choice1 === choice2) {
             console.log("Both the same");
             console.log("Player: " + playerRoundWin + " wins. Computer: " + computerRoundWin);
+            cleanAvatars();
+            $("#couchDraw").css("display","inline-block");
+            showBubble(drawMessage);
         } else if (choice1 === "rock") {
             if (choice2 === "scissors") {
                 console.log("player1 wins");
                 playerRoundWin +=1;
                 $("#player-trophy").prepend('<img src="img/trophy.png" width="52" height="50"> ');
+                cleanAvatars();
+                $("#playerWins").css("display","inline-block");
+                showBubble(playerWinMessage);
                 console.log("Player: " + playerRoundWin + " wins. Computer: " + computerRoundWin);
             } else if (choice2 === "paper") {
                 console.log("computer wins");
                 computerRoundWin +=1;
                 $("#computer-trophy").prepend('<img src="img/trophy.png" width="52" height="50"> ');
+                cleanAvatars();
+                $("#computerWins").css("display","inline-block");
+                showBubble(computerWinMessage);
                 console.log("Player: " + playerRoundWin + " wins. Computer: " + computerRoundWin);
             }
         } else if (choice1 === "paper"){
             if (choice2 === "scissors") {
                 console.log("computer wins");
                 $("#computer-trophy").prepend('<img src="img/trophy.png" width="52" height="50"> ');
+                cleanAvatars();
+                $("#computerWins").css("display","inline-block");
+                showBubble(computerWinMessage);
                 computerRoundWin +=1;
                 console.log("Player: " + playerRoundWin + " wins. Computer: " + computerRoundWin);
             } else if (choice2 === "rock") {
                 console.log("player wins");
                 $("#player-trophy").prepend('<img src="img/trophy.png" width="52" height="50"> ');
+                cleanAvatars();
+                $("#playerWins").css("display","inline-block");
+                showBubble(playerWinMessage);
                 playerRoundWin +=1;
                 console.log("Player: " + playerRoundWin + " wins. Computer: " + computerRoundWin);
             }
@@ -55,11 +75,17 @@ $(document).ready(function(){
             if (choice2 === "rock") {
                 console.log("computer wins");
                 $("#computer-trophy").prepend('<img src="img/trophy.png" width="52" height="50"> ');
+                cleanAvatars();
+                $("#computerWins").css("display","inline-block");
+                showBubble(computerWinMessage);
                 computerRoundWin +=1;
                 console.log("Player: " + playerRoundWin + " wins. Computer: " + computerRoundWin);
             } else if (choice2 === "paper") {
                 console.log("player wins");
                 $("#player-trophy").prepend('<img src="img/trophy.png" width="52" height="50"> ');
+                cleanAvatars();
+                $("#playerWins").css("display","inline-block");
+                showBubble(playerWinMessage);
                 playerRoundWin +=1;
                 console.log("Player: " + playerRoundWin + " wins. Computer: " + computerRoundWin);
             }
@@ -91,6 +117,8 @@ $(document).ready(function(){
         }
         cleanTrophy();
         cleanChoiceText();
+        cleanAvatars();
+        cleanBubble();
     }
 
     var cleanTrophy = function(){
@@ -109,6 +137,21 @@ $(document).ready(function(){
         $("#player-win-counter").text(playerWins);
         $("#computer-win-counter").text(computerWins);
         cleanChoiceText();
+    }
+
+    var cleanAvatars = function(){
+        $("#computerWins").css("display","none");
+        $("#playerWins").css("display","none");
+        $("#couchDraw").css("display","none");
+    }
+
+    var showBubble = function(msg) {
+        $("#bubble").css("display","inline-block");
+        $(".bubble-message").text(msg);
+    }
+
+    var cleanBubble = function(){
+        $("#bubble").css("display","none");
     }
 
     $("#start-over").on("click",function(){
