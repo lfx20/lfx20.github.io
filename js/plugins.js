@@ -43,14 +43,6 @@
             color: "#0c8cbd"
         },prop);
 
-//        return this.click(function(e){
-//            add_block_page();
-//            add_modal_box();
-//            add_styles();
-//
-//            $('.modal_box').fadeIn();
-//        });
-
         add_block_page();
         add_modal_box();
         add_styles();
